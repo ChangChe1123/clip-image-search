@@ -31,9 +31,8 @@ class OCRModel:
         self.config = config
         self.model = PaddleOCR(
             ocr_version="PP-OCRv3",
-            det_model_dir="{}/{}".format(config['ocr-model-download'], config['ocr-det-model']),  # Chinese
-            rec_model_dir="{}/{}".format(config['ocr-model-download'], config['ocr-rec-model']),  # Chinese
-            use_gpu=(config["device"] == "cuda"),
+            text_detection_model_dir="{}/{}".format(config['ocr-model-download'], config['ocr-det-model']),  # Chinese
+            text_recognition_model_dir="{}/{}".format(config['ocr-model-download'], config['ocr-rec-model'])
         )
 
     def get_ocr_result(self, image_path: str) -> str:

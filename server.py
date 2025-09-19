@@ -139,12 +139,12 @@ class SearchServer:
             with gr.Row():
                 with gr.Column(scale=1):
                     prompt_textbox = gr.Textbox(lines=8, label="Prompt")
-                    button_prompt = gr.Button("Search Text").style(size="lg")
+                    button_prompt = gr.Button("Search Text", elem_classes="large-button")
                 with gr.Column(scale=2):
                     input_image = gr.Image(label="Image", type="pil")
                     with gr.Row():
-                        button_image = gr.Button("Search Image").style(size="lg")
-                        button_upload = gr.Button("Upload Image").style(size="lg")
+                        button_image = gr.Button("Search Image", elem_classes="large-button")
+                        button_upload = gr.Button("Upload Image", elem_classes="large-button")
 
             with gr.Accordion("Search options", open=False):
                 extension_choice = gr.CheckboxGroup(["jpg", "png", "gif"], label="extension", info="choose extension for search")
@@ -155,7 +155,7 @@ class SearchServer:
             with gr.Accordion("Debug output", open=False):
                 debug_output = gr.Textbox(lines=1)
 
-            gallery = gr.Gallery(label="results").style(grid=4, height=6)
+            gallery = gr.Gallery(label="results", columns=4, rows=6)
 
             button_prompt.click(_gradio_search_image, inputs=[prompt_textbox, topn, minimum_width, minimun_height, extension_choice], outputs=[gallery])
             button_image.click(_gradio_search_image, inputs=[input_image, topn, minimum_width, minimun_height, extension_choice], outputs=[gallery])
